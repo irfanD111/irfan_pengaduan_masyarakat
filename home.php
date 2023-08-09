@@ -55,7 +55,7 @@
   <tbody>
     <?php foreach ($data as $pengaduan){ ?>
     <tr>
-      <th scope="row">1</th>
+      <th scope="row"><?= $pengaduan ['id_pengaduan']?></th>
       <td><?= $pengaduan ['tgl__pengaduan']?></td>
       <td><?= $pengaduan ['nik']?></td>
       <td><?= $pengaduan ['isi_laporan']?></td>
