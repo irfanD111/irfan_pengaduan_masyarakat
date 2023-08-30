@@ -1,22 +1,21 @@
 <?php 
   session_start();
-    if(!isset($_SESSION['nik'])){
+    if(!isset($_SESSION['id_petugas'])){
       header("location:login.php");
     }
 
   $koneksi = new PDO("mysql:host=localhost;dbname=pengaduan_masyarakat","root","");
-  $nik=$_SESSION['nik'];
+//   $id_p=$_SESSION['id_petugas'];
+//   $level=$_SESSION['level'];
 
-  // echo $nik;
-  $query = $koneksi->query("select * from pengaduan where nik='$nik'");
+
+  $query = $koneksi->query("select * from pengaduan ");
   $data = $query->fetchAll();
   
-    // echo $_SESSION['nik'];
+    // echo $_SESSION['id_petugas'];
     // echo $_SESSION['level'];
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,13 +24,25 @@
     <link rel="stylesheet" href="bs/bs2/bs1/css/bootstrap.min.css">
 </head>
 <body>
-<?php  include 'navbar.php'  ?>
 <div class="container">
+  <div class="container-fluid position-relative">
+    <div class="position-absolute top-0 start-0">
+      <a class="navbar-brand" href="">
+        <img src="image/pengaduan.png" alt="Bootstrap" width="65" height="65">
+      </a>
+    </div>
+  </div>
+    <ul class="nav nav-underline nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link"  href="logout.php">logout</a>
+      </li>
+    </ul>
+
+
+  <br><br><br><br>
+  <h2 >Laporan Masyarakat</h2>
   <br>
-   
-<h2 style= text-align:center>Selamat Datang <br>Di Pengaduan Masyarakat</h2>
-  <br>
-  <br>  
+
     <table class="table">
   <thead>
     <tr>
@@ -53,9 +64,7 @@
       <td style ="text-align:justify;"><?= $pengaduan ['isi_laporan']?></td>
       <td><img src ="image/<?= $pengaduan ['foto']?>" height ="100px" width="100px" style="border-radius:10px;"></td>
       <td><?= $pengaduan ['status']?></td>
-      <td><a href="halaman_edit.php?id=<?=$pengaduan['id_pengaduan']?>"><button type="button" class="btn btn-outline-info" >U</button></a>
-      <br><br>
-          <a href="proses_hapus.php?id=<?=$pengaduan['id_pengaduan']?>"><button type="button" class="btn btn-outline-dark">X</button></td></a>
+      <td><a href="tanggapan.php?id=<?=$pengaduan['id_pengaduan']?>"><button type="button" class="btn btn-outline-info" style="margin:5px">Tanggapi</button></a>
 
     </tr>
    <?php  }?>

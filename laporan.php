@@ -8,40 +8,25 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary" >
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Pengaduan Masyarakat</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="nav nav-tabs">
-                  <li class="nav-item">
-                  <a class="nav-link " aria-current="page" href="home.php">Home</a>
-                </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" href="laporan.php">Buat Laporan</a>
-                  </li>
-                  <div class="position-absolute top-5 end-0">  
-                    <a href="Login.php" class="btn btn-outline-secondary" role="button" data-bs-toggle="button">Login</a>
-                    <a href="Daftar.php" class="btn btn-outline-secondary" role="button" data-bs-toggle="button">Daftar</a>
-                  </div>
-                </ul>
-             </div>
-      </div>
-</nav>
-
+  
+<?php 
+   include "navbar.php";
+?>
+<br>
+<br>
+<h2 style= text-align:center>Laporkan <br>Keluh Kesah Anda</h2>
+<br>
 <div class="container">
-<form>
+<form action= "proses_pengaduan.php" method="POST" enctype="multipart/form-data">
     <div class="mb-3">
       <label for="exampleFormControlTextarea1" class="form-label">IsiLaporan</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="isi_laporan"></textarea>
     </div>
-   <div class="mb-3">
+    <div class="mb-3">
       <label for="formFile" class="form-label">Foto</label>
-      <input class="form-control" type="file" id="formFile">
+      <input class="form-control" type="file" id="formFile" name="gambar">
     </div>
-    <a href="home.php" class="btn btn-outline-secondary" role="button" data-bs-toggle="button">Buat</a>
+    <button type="submit" class="btn btn-outline-secondary">Buat</button>
 </form>
 </div>
 </body>
